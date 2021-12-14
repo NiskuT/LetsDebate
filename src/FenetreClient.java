@@ -14,6 +14,7 @@ public class FenetreClient extends JFrame {
 
     private void build(){
         setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setUndecorated(true);
         setLocationRelativeTo(null);
         setResizable(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -23,13 +24,12 @@ public class FenetreClient extends JFrame {
 
     private JPanel buildContentPane(){
         JPanel panel = new JPanel();
-        panel.setLayout(null);
+        panel.setLayout(new GridBagLayout());
         panel.setBackground(Color.BLACK);
 
         chronotxt = new JLabel(chrono);
         panel.add(chronotxt);
-        chronotxt.setBounds(200,0,2000,1000);
-        chronotxt.setFont(new Font("Century Gothic Black", Font.PLAIN, 200));
+        chronotxt.setFont(new Font("Century Gothic Black", Font.PLAIN, 400));
         chronotxt.setForeground(Color.ORANGE);
 
         return panel;
