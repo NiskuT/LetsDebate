@@ -24,9 +24,8 @@ public class Client {
         while(true){
             line = input.readLine();
             if (line == null || line.equals("Done")) break;
-            System.out.println();
+            System.out.println("\n\n\n\n\n\n\n\n\n\n");
             System.out.println(line);
-
         }
 
         try {
