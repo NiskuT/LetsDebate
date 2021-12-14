@@ -10,16 +10,20 @@ public class Server {
     private ServerSocket serverSocket;
     private static Chrono chrono1;
     private static Chrono chrono2;
+    private static FenetreServer fenetre;
 
     public void start(int port) throws IOException {
         serverSocket = new ServerSocket(port);
+        System.out.println(serverSocket.getLocalSocketAddress());
         chrono1 = new Chrono();
         chrono2 = new Chrono();
-        Fenetre test = new Fenetre(chrono1, chrono2);
-        test.show();
+        fenetre = new FenetreServer(chrono1, chrono2);
         System.out.println(serverSocket);
-        while (true)
-            new ClientHandler(serverSocket.accept()).start();
+        while(true) {
+            Socket serverofsocket = serverSocket.accept();
+            System.out.println(serverofsocket);
+            new ClientHandler(serverofsocket).start();
+        }
     }
 
     public void stop() throws IOException {
@@ -53,6 +57,7 @@ public class Server {
 
             String inputLine = "";
             for(int k = 0; k<500;k++) {
+                fenetre.update();
                 out.println("Chrono1 : " + chrono1.getDureeTxt()+"     ||     Chrono2 : " + chrono2.getDureeTxt());
                 try {
                     TimeUnit.SECONDS.sleep(1);

@@ -11,6 +11,12 @@ public class Client {
     public Client(String address, Integer port) throws IOException {
 
         //code to establish a connection
+        System.out.println("Quel chrono ? ");
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String s = br.readLine();
+
+        FenetreClient fenetreClient = new FenetreClient("");
+
         try {
             startConnection(address, port);
         } catch (UnknownHostException e) {
@@ -26,6 +32,13 @@ public class Client {
             if (line == null || line.equals("Done")) break;
             System.out.println("\n\n\n\n\n\n\n\n\n\n");
             System.out.println(line);
+
+            String chrono;
+            if(s.equals("1")) chrono = line.substring(10,17);
+            else if(s.equals("2")) chrono = line.substring(39,46);
+            else chrono = "";
+
+            fenetreClient.update(chrono);
         }
 
         try {
