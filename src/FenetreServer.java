@@ -31,37 +31,54 @@ public class FenetreServer extends JFrame implements ActionListener {
 
     private JPanel buildContentPane(){
         JPanel panel = new JPanel();
-        panel.setLayout(null);
+        panel.setLayout(new GridBagLayout());
+        GridBagConstraints gc = new GridBagConstraints();
+
+        gc.fill = GridBagConstraints.BOTH;
+        gc.insets = new Insets(10,10,10,10);
+        gc.ipady = gc.anchor = GridBagConstraints.CENTER;
+        gc.weightx = 3;
+        gc.weighty = 2;
+
+        gc.gridx = 0;
+        gc.gridy = 0;
 
         bouton1= new JButton("Chrono1");
         bouton1.addActionListener(this);
-        panel.add(bouton1);
-        bouton1.setBounds(200,300,400,400);
+        panel.add(bouton1, gc);
         bouton1.setBackground(Color.WHITE);
         bouton1.setFont(new Font("Century Gothic Black", Font.PLAIN, 50));
 
+        gc.gridx = 1;
+        gc.gridy = 0;
+
         bouton2 = new JButton("Speaker");
         bouton2.addActionListener(this);
-        panel.add(bouton2);
-        bouton2.setBounds(700,300,400,400);
+        panel.add(bouton2, gc);
         bouton2.setBackground(Color.WHITE);
         bouton2.setFont(new Font("Century Gothic Black", Font.PLAIN, 50));
 
+        gc.gridx = 2;
+        gc.gridy = 0;
+
         bouton3 = new JButton("Chrono2");
         bouton3.addActionListener(this);
-        panel.add(bouton3);
-        bouton3.setBounds(1200,300,400,400);
+        panel.add(bouton3, gc);
         bouton3.setBackground(Color.WHITE);
         bouton3.setFont(new Font("Century Gothic Black", Font.PLAIN, 50));
 
+        gc.gridx = 0;
+        gc.gridy = 1;
+
         chrono1txt = new JLabel(chrono1.getDureeTxt());
-        panel.add(chrono1txt);
-        chrono1txt.setBounds(200,750,400,200);
+        panel.add(chrono1txt, gc);
         chrono1txt.setFont(new Font("Century Gothic Black", Font.PLAIN, 130));
 
+        gc.gridx = 2;
+        gc.gridy = 1;
+
         chrono2txt = new JLabel(chrono2.getDureeTxt());
-        panel.add(chrono2txt);
-        chrono2txt.setBounds(1200,750,400,200);
+        panel.add(chrono2txt, gc);
         chrono2txt.setFont(new Font("Century Gothic Black", Font.PLAIN, 130));
 
         return panel;
